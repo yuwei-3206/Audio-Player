@@ -1,0 +1,53 @@
+/* Custom Font Import from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+  --color-white: #ffffff;
+  --color-light: #ccc;
+  --color-black: #2b2b2b;
+  --color-primary: #4A707A;
+  --color-secondary: #6d9ba8;
+
+  --container-width-ls: 75%;
+  --container-width-ms: 86%;
+  --container-width-ss: 98%;
+
+  --transision: all 400ms ease-in;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.playlist::-webkit-scrollbar {
+  display: auto;
+}
+
+body {
+  color: var(--color-black);
+  font-family: "Poppins", sans-serif;
+  background: var(--color-white);
+  line-height: 1.6;
+}
+
+/* For Tablets - Medium Devices */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: var(--container-width-ms);
+  }
+}
+
+/* For Mobile and small screens - Small Devices */
+@media screen and (max-width: 600px) {
+  .container {
+    width: var(--container-width-ss);
+  }
+
+  section {
+    margin-top: 5rem;
+  }
+}

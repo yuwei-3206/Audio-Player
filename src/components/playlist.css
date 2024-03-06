@@ -1,0 +1,60 @@
+/*  Playlist  */
+
+.playlist-container {
+  text-align: center;
+  margin: 20px;
+  width: 1000px;
+  margin: auto;
+}
+
+.title {
+    font-size: 25pt; 
+    color: var(--color-primary);
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 5%;
+  }
+
+  .playtitle {
+    font-size: 15pt; 
+    color: var(--color-primary);
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 5%;
+  }
+
+  /*  Now Play  */
+
+  .now-play {
+    width: 1000px;
+    margin: auto;
+  }
+  
+  .now-play-item {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
+  /*  Next Play  */
+  
+  .songs-and-podcasts {
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .playlist {
+    height: 350px;
+    overflow-y: auto;
+  }
+
+  /*  Footer  */
+
+  .copyRight {
+    color: rgba(0, 0, 0, 0.35);
+    font-size: 12px;
+    margin-top: 1rem;
+  }

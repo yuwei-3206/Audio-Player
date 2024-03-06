@@ -1,0 +1,14 @@
+.btn {
+    color: var(--color-dark);
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 50px;
+  }
+  
+  .btn:hover {
+    color: var(--color-secondary);
+  }
+  

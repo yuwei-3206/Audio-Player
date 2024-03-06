@@ -1,0 +1,10 @@
+.song, .podcast  {
+    width: 1000px;
+    text-align: left;
+    padding-left: 50px;
+    align-items: center;
+  }
+  
+  .single-line {
+    white-space: nowrap;
+  }
