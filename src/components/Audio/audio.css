@@ -1,10 +1,25 @@
-.song, .podcast  {
-    width: 1000px;
+.song,
+.podcast  {
+    width: 95%;
     text-align: left;
     padding-left: 50px;
+
     align-items: center;
+    justify-content: center;
+    cursor: default;
   }
-  
-  .single-line {
-    white-space: nowrap;
-  }
+
+.song:hover,
+.podcast:hover  {
+    background-color: rgb(0, 0, 0, 0.05);
+    border-radius: 5px;
+}
+
+.song span,
+.podcast span{
+    padding-right: 2rem;
+}
+
+.audio-icon {
+    font-size: 1.5rem;
+}

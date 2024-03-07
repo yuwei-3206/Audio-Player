@@ -2,9 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Song from './Audio/Song';
 import Podcast from './Audio/Podcast';
 import ShuffleBtn from './Buttons/ShuffleBtn';
-import PlayPauseBtn from './Buttons/PlayPauseBtn';
-import PrevBtn from './Buttons/PrevBtn';
-import NextBtn from './Buttons/NextBtn';
+import Status from './Status';
 import './playlist.css';
 
 const Playlist = () => {
@@ -93,17 +91,7 @@ const Playlist = () => {
   return (
     <div className="playlist-container">
       <h2 className="title">My Playlist</h2>
-      <div className="now-play">
-        <h2 className="playtitle">{status}</h2>
-        <div className="now-play-item">
-          <div>
-            <PrevBtn onClick={handlePrev} />
-            <PlayPauseBtn onClick={handlePlayPause} isPlaying={isPlaying} />
-            <NextBtn onClick={handleNext} />
-          </div>
-        </div>
-      </div>
-
+      <Status status={status} isPlaying={isPlaying} handlePlayPause={handlePlayPause} handlePrev={handlePrev} handleNext={handleNext} />
       <div className="next-play">
         <h2 className="playtitle">Play List
           <ShuffleBtn onClick={handleShuffle} />
@@ -118,7 +106,7 @@ const Playlist = () => {
           </div>
         </div>
       </div>
-      <p className="copyRight">Copyright © 2024 Yu-Wei Wu. All rights reserved.</p>
+      <p className="copyRight">© 2024 Yu-Wei Wu.</p>
     </div>
   );
 };

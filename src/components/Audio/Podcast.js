@@ -4,14 +4,16 @@ import './audio.css';
 
 const Podcast = ({ season, episode, episodeTitle, onDoubleClick }) => {
   const displaySeason = season !== undefined ? `Season: ${season}` : '';
+  const displayEpisode = episode !== undefined ? `Episode: ${episode}` : '';
+  const displayEpisodeTitle = episodeTitle !== undefined ? `Episode Title: ${episodeTitle}` : '';
 
   return (
     <div className="podcast" onDoubleClick={() => onDoubleClick({ season, episode, episodeTitle })}>
       <p>
-        <FaPodcast />
+        <span className="audio-icon"><FaPodcast /></span>
         {displaySeason && <span className='season'>{displaySeason} </span>}
-        <span>Episode: {episode}</span>
-        <span>Episode Title: {episodeTitle}</span>
+        {displayEpisode && <span>{displayEpisode} </span>}
+        {displayEpisodeTitle && <span>{displayEpisodeTitle} </span>}
       </p>
     </div>
   );

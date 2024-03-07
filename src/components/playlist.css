@@ -13,48 +13,52 @@
     text-align: center;
     margin-left: 5%;
     margin-bottom: 5%;
-  }
+}
 
-  .playtitle {
+.playtitle {
     font-size: 15pt; 
     color: var(--color-primary);
     text-align: left;
     margin-left: 5%;
     margin-top: 5%;
-  }
+}
 
-  /*  Now Play  */
+/*  Now Play  */
 
-  .now-play {
+.now-play {
     width: 1000px;
     margin: auto;
-  }
+}
   
-  .now-play-item {
+.now-play-item {
     font-size: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: left;
-  }
+}
 
-  /*  Next Play  */
+/*  Next Play  */
   
-  .songs-and-podcasts {
+.songs-and-podcasts {
     font-size: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-  }
+}
   
-  .playlist {
-    height: 350px;
+.playlist {
+    max-height: 350px;
     overflow-y: auto;
-  }
+    overflow-x: hidden;
 
-  /*  Footer  */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1);
+}
 
-  .copyRight {
+/*  Footer  */
+
+.copyRight {
     color: rgba(0, 0, 0, 0.35);
     font-size: 12px;
     margin-top: 1rem;
-  }
+}
