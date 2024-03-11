@@ -3,6 +3,7 @@ import Song from './Audio/Song';
 import Podcast from './Audio/Podcast';
 import ShuffleBtn from './Buttons/ShuffleBtn';
 import Status from './Status';
+import audioData from '../../public/audio_tracks.json';
 import './playlist.css';
 
 const Playlist = () => {
@@ -25,7 +26,8 @@ const Playlist = () => {
     setIsPlaying(true);
   }, [renderTitle]);
 
-  useEffect(() => {
+  /**  fetch with localhost:3000
+    useEffect(() => {
     fetch('http://localhost:3000/audio_tracks.json')
       .then(response => {
         if (!response.ok) {
@@ -40,7 +42,16 @@ const Playlist = () => {
         playTrack(shuffledPlaylist[0]);
       })
       .catch(error => console.error('Error fetching playlist:', error));
+  }, [playTrack]);*/
+
+  /*  get the json file directly  */ 
+  useEffect(() => {
+    const shuffledPlaylist = [...audioData.tracks].sort(() => Math.random() - 0.5);
+    setPlaylist(shuffledPlaylist);
+    setCurrentTrackIndex(0);
+    playTrack(shuffledPlaylist[0]);
   }, [playTrack]);
+
 
   const handleDoubleClick = (track) => {
     const newIndex = playlist.findIndex(item => item === track);
