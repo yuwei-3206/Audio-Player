@@ -1,6 +1,7 @@
 {
-  "name": "Audio-Player",
+  "name": "@yuwei-3206/audio-player",
   "version": "0.1.0",
+  "homepage": "https://yuwei-3206.github.io/Audio-Player/",
   "private": true,
   "babel": {
     "presets": [
