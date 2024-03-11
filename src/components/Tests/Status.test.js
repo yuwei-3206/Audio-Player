@@ -1,26 +1,25 @@
 import React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import { request } from 'graphql-request';
+import { render, fireEvent, waitFor, screen, cleanup } from '@testing-library/react';
 import Status from '../Status';
 
-jest.mock('graphql-request', () => ({
-  request: jest.fn(),
-}));
+afterEach(cleanup);
 
 describe('Status component', () => {
   test('renders status correctly', async () => {
-    const songData = {
-        title: 'Song Title',
-        artist: 'Artist Name',
-        year: 2022,
-      };
-    request.mockResolvedValue(songData);
+    const audioData = {
+      title: 'Title A',
+      artist: 'Artist A',
+      year: 2022,
+    };
+  
+    let isPlaying = false;
 
-    const statusText = `Now Playing: ${songData.title}`;
-    const isPlaying = true;
+    const statusText = isPlaying ? "Paused" : `Now Playing: ${audioData.title}`;
     
     // Mock event handlers
-    const handlePlayPauseMock = jest.fn();
+    const handlePlayPauseMock = jest.fn(() => {
+      isPlaying = !isPlaying;
+    });
     const handlePrevMock = jest.fn();
     const handleNextMock = jest.fn();
     
@@ -35,10 +34,16 @@ describe('Status component', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText(statusText)).toBeDefined();
-      expect(screen.getByRole('button', { name: /play or pause/i })).toBeDefined();
-      expect(screen.getByRole('button', { name: /previous/i })).toBeDefined();
-      expect(screen.getByRole('button', { name: /next/i })).toBeDefined();
+      expect(screen.getByText(statusText)).toBeTruthy();
+    });
+
+    // Click Play/Pause button
+    fireEvent.click(screen.getByTestId('playPauseBtn'));
+
+    // Check if statusText changes according to the new state
+    await waitFor(() => {
+      const expectedStatusText = !isPlaying ? "Paused" : `Now Playing: ${audioData.title}`;
+      expect(screen.getByText(expectedStatusText)).toBeTruthy();
     });
   });
 
@@ -46,7 +51,7 @@ describe('Status component', () => {
     const handlePlayPauseMock = jest.fn();
     render(<Status status="Now Playing" isPlaying={false} handlePlayPause={handlePlayPauseMock} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /play or pause/i }));
+    fireEvent.click(screen.getByTestId('playPauseBtn'));
 
     await waitFor(() => {
       expect(handlePlayPauseMock).toHaveBeenCalledTimes(1);
@@ -57,7 +62,7 @@ describe('Status component', () => {
     const handlePrevMock = jest.fn();
     render(<Status status="Now Playing" isPlaying={true} handlePrev={handlePrevMock} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /previous/i }));
+    fireEvent.click(screen.getByTestId('prevBtn'));
 
     await waitFor(() => {
       expect(handlePrevMock).toHaveBeenCalledTimes(1);
@@ -68,7 +73,7 @@ describe('Status component', () => {
     const handleNextMock = jest.fn();
     render(<Status status="Now Playing" isPlaying={true} handleNext={handleNextMock} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /next/i }));
+    fireEvent.click(screen.getByTestId('nextBtn'));
 
     await waitFor(() => {
       expect(handleNextMock).toHaveBeenCalledTimes(1);

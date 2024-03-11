@@ -1,6 +1,8 @@
 import React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, fireEvent, waitFor, screen, cleanup } from '@testing-library/react';
 import ShuffleBtn from '../Buttons/ShuffleBtn';
+
+afterEach(cleanup);
 
 describe('ShuffleBtn component', () => {
   test('renders correctly', async () => {
@@ -9,8 +11,8 @@ describe('ShuffleBtn component', () => {
     const button = screen.getByRole('button');
 
     await waitFor(() => {
-      expect(button).toBeDefined(); // Check if the button is rendered
-      expect(button.querySelector('svg')).toBeDefined(); // Check if the icon is rendered
+      expect(button).toBeTruthy(); // Check if the button is rendered
+      expect(button.querySelector('svg')).toBeTruthy(); // Check if the icon is rendered
     });
   });
 

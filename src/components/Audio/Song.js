@@ -4,14 +4,16 @@ import './audio.css';
 
 const Song = ({ title, artist, year, onDoubleClick }) => {
   const renderYear = (year) => {
-    if (typeof year === 'number') {
-      return year;
-    } else if (typeof year === 'string' && /^\d{4}$/.test(year)) {
-      return parseInt(year, 10);
-    } else {
-      return 'Invalid year';
-    }
+    // Convert year to a positive number if negative
+    const positiveYear = Math.abs(year);
+  
+    // Check if year is a valid number between 1500 and 9999
+    const isValidYear = Number.isInteger(positiveYear) && positiveYear >= 1500 && positiveYear <= 9999;
+  
+    // Return the year if it's valid, otherwise return Unknown
+    return isValidYear ? positiveYear : 'Unknown';
   };
+  
 
   return (
     <div className="song" onDoubleClick={() => onDoubleClick({ title, artist, year })}>

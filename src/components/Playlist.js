@@ -19,7 +19,7 @@ const Playlist = () => {
     }
     return "No Title";
   }, []);
-
+  
   const playTrack = useCallback((track) => {
     setStatus(`Playing: ${renderTitle(track)}`);
     setIsPlaying(true);
