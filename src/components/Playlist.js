@@ -3,7 +3,7 @@ import Song from './Audio/Song';
 import Podcast from './Audio/Podcast';
 import ShuffleBtn from './Buttons/ShuffleBtn';
 import Status from './Status';
-import audioData from '../../public/audio_tracks.json';
+import audioData from '../audio_tracks.json';
 import './playlist.css';
 
 const Playlist = () => {
