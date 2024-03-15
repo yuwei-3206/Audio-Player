@@ -3,7 +3,7 @@ import Song from './Audio/Song';
 import Podcast from './Audio/Podcast';
 import ShuffleBtn from './Buttons/ShuffleBtn';
 import Status from './Status';
-/*import audioData from '../data/audio_tracks.json';*/
+/*import audioData from '../../public/data/audio_tracks.json';*/
 import './playlist.css';
 
 const Playlist = () => {
@@ -28,7 +28,7 @@ const Playlist = () => {
 
   /**  fetch API */
   useEffect(() => {
-    fetch('../data/audio_tracks.json')
+    fetch('/Audio-Player/audio_tracks.json')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch playlist');
@@ -44,6 +44,7 @@ const Playlist = () => {
       .catch(error => console.error('Error fetching playlist:', error));
   }, [playTrack]);
   
+  
 
   /*  Import directly
   useEffect(() => {
@@ -51,8 +52,8 @@ const Playlist = () => {
     setPlaylist(shuffledPlaylist);
     setCurrentTrackIndex(0);
     playTrack(shuffledPlaylist[0]);
-  }, [playTrack]); 
-  */
+  }, [playTrack]); */
+ 
 
 
   const handleDoubleClick = (track) => {
