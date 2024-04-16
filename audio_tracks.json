@@ -3,70 +3,93 @@
     {
       "title": "Billie Jean",
       "artist": "Michael Jackson",
-      "year": "1983"
+      "year": "1983",
+      "img": "billie_jean.jpg",
+      "duration": "4:54"
     },
     {
       "title": "Smells Like Teen Spirit",
       "artist": "Nirvana",
-      "year": 1991
+      "year": 1991,
+      "img": "smells_like_teen_spirit.jpg",
+      "duration": "5:02"
     },
     {
       "artist": "Rick Astley",
       "year": 1987,
-      "title": "Never Gonna Give You Up"
+      "title": "Never Gonna Give You Up",
+      "img": "never_gonna_give_you_up.jpg",
+      "duration": "3:35"
     },
     {
       "episode": 360,
-      "episodeTitle": "Switched at Birth"
+      "episodeTitle": "Switched at Birth",
+      "duration": "45:00"
     },
     {
       "season": 7,
       "episode": 2,
-      "episodeTitle": "How to Fail: Malcolm Gladwell"
+      "episodeTitle": "How to Fail: Malcolm Gladwell",
+      "duration": "46:34"
     },
     {
       "episode": 5,
       "season": 1,
-      "episodeTitle": "Route Talk"
+      "episodeTitle": "Route Talk",
+      "img": "route_talk.jpg",
+      "duration": "21:00"
     },
     {
       "artist": "Nathan Evans",
       "year": 2021,
       "title": "Wellerman",
-      "genre": "Folk"
+      "genre": "Folk",
+      "img": "wellerman.jpg",
+      "duration": "2:36"
     },
     {
       "artist": "John D. Smith",
       "year": 2003,
-      "title": "Podcasts Are Overrated"
+      "title": "Podcasts Are Overrated",
+      "duration": "5:00"
     },
     {
       "podcast": "The Moth",
-      "episodeTitle": "The Moth Presents Anthony Griffith"
+      "episodeTitle": "The Moth Presents Anthony Griffith",
+      "img": "the_moth_presents_anthony_griffith.jpg",
+      "duration": "9:22"
     },
     {
       "episode": 7,
-      "episodeTitle": "Vocational Wheel"
+      "episodeTitle": "Vocational Wheel",
+      "duration": "5:00"
     },
     {
       "artist": "Rebecca Black",
       "year": 2011,
-      "title": "Friday"
+      "title": "Friday",
+      "img": "friday.png",
+      "duration": "3:44"
     },
     {
       "season": 1,
       "episode": 2,
       "episodeTitle": "John D. Smith is a Subpar Musician",
-      "year": 2004
+      "year": 2004,
+      "duration": "5:00"
     },
     {
       "episode": 1169,
-      "episodeTitle": "The Joe Rogan Experience- #1169: Elon Musk"
+      "episodeTitle": "The Joe Rogan Experience- #1169: Elon Musk",
+      "img": "the_joe_rogan_experience.png",
+      "duration": "2:36:53"
     },
     {
       "artist": "Taylor Swift",
       "year": 2023,
-      "title": "Cruel Summer"
+      "title": "Cruel Summer",
+      "img": "cruel_summer.jpg",
+      "duration": "2:58"
     }
   ]
 }

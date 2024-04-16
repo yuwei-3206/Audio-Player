@@ -1,13 +1,24 @@
 {
   "files": {
-    "main.css": "/Audio-Player/static/css/main.80166e33.css",
-    "main.js": "/Audio-Player/static/js/main.cba2f6d7.js",
+    "main.css": "/Audio-Player/static/css/main.990116fd.css",
+    "main.js": "/Audio-Player/static/js/main.66a63938.js",
+    "static/media/the_joe_rogan_experience.png": "/Audio-Player/static/media/the_joe_rogan_experience.aefdd72dc05b9b0f6f8e.png",
+    "static/media/song.jpg": "/Audio-Player/static/media/song.712eba968fb79bdb7a8d.jpg",
+    "static/media/podcast.png": "/Audio-Player/static/media/podcast.0ebfae2dee045a205955.png",
+    "static/media/the_moth_presents_anthony_griffith.jpg": "/Audio-Player/static/media/the_moth_presents_anthony_griffith.f2eb8d621fa1bdb449e8.jpg",
+    "static/media/friday.png": "/Audio-Player/static/media/friday.a6f6b02bd2316b8e4157.png",
+    "static/media/cruel_summer.jpg": "/Audio-Player/static/media/cruel_summer.8a04a1f748fe75f6088f.jpg",
+    "static/media/wellerman.jpg": "/Audio-Player/static/media/wellerman.74310f18592d08022822.jpg",
+    "static/media/billie_jean.jpg": "/Audio-Player/static/media/billie_jean.d3c47ca0bae1240f064b.jpg",
+    "static/media/smells_like_teen_spirit.jpg": "/Audio-Player/static/media/smells_like_teen_spirit.6aaea6e69f820c01977d.jpg",
+    "static/media/never_gonna_give_you_up.jpg": "/Audio-Player/static/media/never_gonna_give_you_up.63e7941ddb5a97a67748.jpg",
+    "static/media/route_talk.jpg": "/Audio-Player/static/media/route_talk.6356e3c752f90fe8f98f.jpg",
     "index.html": "/Audio-Player/index.html",
-    "main.80166e33.css.map": "/Audio-Player/static/css/main.80166e33.css.map",
-    "main.cba2f6d7.js.map": "/Audio-Player/static/js/main.cba2f6d7.js.map"
+    "main.990116fd.css.map": "/Audio-Player/static/css/main.990116fd.css.map",
+    "main.66a63938.js.map": "/Audio-Player/static/js/main.66a63938.js.map"
   },
   "entrypoints": [
-    "static/css/main.80166e33.css",
-    "static/js/main.cba2f6d7.js"
+    "static/css/main.990116fd.css",
+    "static/js/main.66a63938.js"
   ]
 }
