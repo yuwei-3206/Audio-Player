@@ -1,64 +1,152 @@
-/*  Playlist  */
-
-.playlist-container {
+/*  containers  */
+.container {
   text-align: center;
-  margin: 20px;
-  width: 1000px;
+  width: 75%;
   margin: auto;
 }
 
-.title {
-    font-size: 25pt; 
-    color: var(--color-primary);
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 5%;
+.audio-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-item-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.info-title {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.img-nextplay-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+
+
+/*  Now Play info on the top */
+.info-item {
+    text-align: left;
+    margin-right: 3rem;
+}
+
+.info-item h5,
+.info-item h2,
+.info-item p {
+    margin: 0.25rem 0;
+}
+
+.info-item h5 {
+    color: var(--color-light);
+}
+
+.now-play-btn {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+/*  Now Play img */
+
+.audio-img {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+  
+.audio-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*  Now Play duration time display */
+.audio-duration {
+    font-size: 12.5px;
+    display: flex;
+    justify-content: flex-start;
+    margin: -0.5rem 0;
+}
+
+/*  Now Play progress bar */
+.progress-playbar progress {
+    appearance: none;
+    width: 100%;
+    height: 0.3rem;
+}
+
+.progress-playbar progress::-webkit-progress-bar {
+    background-color: var(--color-light)
+}
+  
+.progress-playbar progress::-webkit-progress-value {
+    background-color: var(--color-primary);
+}
+
+/*  Play List   */
+.next-play {
+    flex: 1;
 }
 
 .playtitle {
     font-size: 15pt; 
-    color: var(--color-primary);
+    color: var(--color-white);
     text-align: left;
-    margin-left: 5%;
-    margin-top: 5%;
+    padding-left: 2rem;
+    margin-top: -0.5%;
 }
-
-/*  Now Play  */
-
-.now-play {
-    width: 1000px;
-    margin: auto;
-}
-  
-.now-play-item {
-    font-size: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: left;
-}
-
-/*  Next Play  */
   
 .songs-and-podcasts {
-    font-size: 15px;
+    font-size: 11pt;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
 }
   
 .playlist {
-    max-height: 350px;
+    max-height: 22rem;
+    max-width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
 
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.1);
 }
 
-/*  Footer  */
+.playlist::-webkit-scrollbar {
+    display: auto; /* Override the global display none */
+    width: 8px;
+  }
+  
+  .playlist::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  .playlist::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+  }
+  
+  .playlist::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
 
+.active-audio {
+    color: var(--color-white);
+}
+
+.inactive-audio {
+    color: var(--color-dark);
+}
+
+/*  copy right  */
 .copyRight {
-    color: rgba(0, 0, 0, 0.35);
-    font-size: 12px;
-    margin-top: 2em;
+    color: var(--color-dark);
+    font-size: 11.5px;
+    margin-top: 3rem;
 }

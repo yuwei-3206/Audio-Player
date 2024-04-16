@@ -5,8 +5,8 @@ import { GiPauseButton } from "react-icons/gi";
 
 const PlayPauseBtn = ({ onClick, isPlaying }) => {
     return (
-        <button className="btn" onClick={onClick} data-testid="playPauseBtn">
-            {isPlaying ? <GiPauseButton/> : <FaPlay />}
+        <button className="play-pause-btn" onClick={onClick} data-testid="playPauseBtn">
+            {isPlaying ? <GiPauseButton style={{ marginLeft: '1px', marginTop: '3px' }} /> : <FaPlay style={{ marginLeft: '4.5px', marginTop: '5px' }} />}
         </button>
     );
 };

@@ -4,9 +4,9 @@
 :root {
   --color-white: #ffffff;
   --color-light: #ccc;
-  --color-black: #2b2b2b;
-  --color-primary: #4A707A;
-  --color-secondary: #6d9ba8;
+  --color-dark: #838383;
+  --color-black: #000000;
+  --color-primary: #f52f2f;
 
   --container-width-ls: 75%;
   --container-width-ms: 86%;
@@ -28,9 +28,9 @@ html {
 }
 
 body {
-  color: var(--color-black);
+  color: var(--color-white);
   font-family: "Poppins", sans-serif;
-  background: var(--color-white);
+  background: var(--color-black);
   line-height: 1.6;
 }
 

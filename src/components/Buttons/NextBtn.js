@@ -1,11 +1,11 @@
 import React from 'react';
 import './buttons.css';
-import { TbPlayerTrackNextFilled } from "react-icons/tb";
+import { MdSkipNext } from "react-icons/md";
 
 const NextBtn = ({ onClick }) => {
     return (
         <button className="btn" onClick={onClick} data-testid="nextBtn">
-            <TbPlayerTrackNextFilled />
+            <MdSkipNext />
         </button>
     );
 };

@@ -1,11 +1,11 @@
 import React from 'react';
 import './buttons.css';
-import { TbPlayerTrackPrevFilled } from "react-icons/tb";
+import { MdSkipPrevious } from "react-icons/md";
 
 const PrevBtn = ({ onClick }) => {
     return (
         <button className="btn" onClick={onClick} data-testid="prevBtn">
-            <TbPlayerTrackPrevFilled />
+            <MdSkipPrevious />
         </button>
     );
 };
