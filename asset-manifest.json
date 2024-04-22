@@ -1,24 +1,43 @@
 {
   "files": {
-    "main.css": "/Audio-Player/static/css/main.990116fd.css",
-    "main.js": "/Audio-Player/static/js/main.66a63938.js",
+    "main.css": "/Audio-Player/static/css/main.bdbc5038.css",
+    "main.js": "/Audio-Player/static/js/main.100cc144.js",
+    "static/media/calm-chill-beautiful.mp3": "/Audio-Player/static/media/calm-chill-beautiful.bbd7309eb4337059e3c0.mp3",
+    "static/media/genres-hiphop.mp3": "/Audio-Player/static/media/genres-hiphop.4f7cf10bd5854eedfbf3.mp3",
+    "static/media/motivate.mp3": "/Audio-Player/static/media/motivate.e85f5d302d36831f559a.mp3",
+    "static/media/game-setting-fantasy.mp3": "/Audio-Player/static/media/game-setting-fantasy.fb08e82842823f265843.mp3",
+    "static/media/background.mp3": "/Audio-Player/static/media/background.3195eaa24735278d767c.mp3",
+    "static/media/sentiments-deerson.mp3": "/Audio-Player/static/media/sentiments-deerson.95784f1514602e259a47.mp3",
+    "static/media/tvari-hawaii-vacation.mp3": "/Audio-Player/static/media/tvari-hawaii-vacation.a8200095e25207375443.mp3",
+    "static/media/dreamscape-calmchillout.mp3": "/Audio-Player/static/media/dreamscape-calmchillout.c2e833306536794bddd9.mp3",
+    "static/media/golden-summer.mp3": "/Audio-Player/static/media/golden-summer.6c546fe05bb06dee4497.mp3",
+    "static/media/jazz-lounge-street-food.mp3": "/Audio-Player/static/media/jazz-lounge-street-food.403fa86fd2f53212b14a.mp3",
+    "static/media/happiness-upbeat.mp3": "/Audio-Player/static/media/happiness-upbeat.101e0a6fc1ab5e58ca29.mp3",
+    "static/media/romantic-wedding.mp3": "/Audio-Player/static/media/romantic-wedding.1bb9fe57264b24de04d7.mp3",
+    "static/media/chasing-balloons.mp3": "/Audio-Player/static/media/chasing-balloons.dff7502f56496086241a.mp3",
+    "static/media/background-music.mp3": "/Audio-Player/static/media/background-music.b3f3b15fd89e08d60d5b.mp3",
     "static/media/the_joe_rogan_experience.png": "/Audio-Player/static/media/the_joe_rogan_experience.aefdd72dc05b9b0f6f8e.png",
     "static/media/song.jpg": "/Audio-Player/static/media/song.712eba968fb79bdb7a8d.jpg",
     "static/media/podcast.png": "/Audio-Player/static/media/podcast.0ebfae2dee045a205955.png",
     "static/media/the_moth_presents_anthony_griffith.jpg": "/Audio-Player/static/media/the_moth_presents_anthony_griffith.f2eb8d621fa1bdb449e8.jpg",
     "static/media/friday.png": "/Audio-Player/static/media/friday.a6f6b02bd2316b8e4157.png",
+    "static/media/switched_at_birth.jpg": "/Audio-Player/static/media/switched_at_birth.96fa415e28dd1efea7dc.jpg",
     "static/media/cruel_summer.jpg": "/Audio-Player/static/media/cruel_summer.8a04a1f748fe75f6088f.jpg",
     "static/media/wellerman.jpg": "/Audio-Player/static/media/wellerman.74310f18592d08022822.jpg",
     "static/media/billie_jean.jpg": "/Audio-Player/static/media/billie_jean.d3c47ca0bae1240f064b.jpg",
+    "static/media/conan_returned.jpg": "/Audio-Player/static/media/conan_returned.fbfccb46081121676d80.jpg",
+    "static/media/fix_you.jpg": "/Audio-Player/static/media/fix_you.0f62c948e416928c4b06.jpg",
     "static/media/smells_like_teen_spirit.jpg": "/Audio-Player/static/media/smells_like_teen_spirit.6aaea6e69f820c01977d.jpg",
     "static/media/never_gonna_give_you_up.jpg": "/Audio-Player/static/media/never_gonna_give_you_up.63e7941ddb5a97a67748.jpg",
+    "static/media/kiseki.jpg": "/Audio-Player/static/media/kiseki.4cf1b208cc1421eceec8.jpg",
     "static/media/route_talk.jpg": "/Audio-Player/static/media/route_talk.6356e3c752f90fe8f98f.jpg",
+    "static/media/how_to_fail_malcolm_gladwell.jpg": "/Audio-Player/static/media/how_to_fail_malcolm_gladwell.062600c140654ddb4c34.jpg",
     "index.html": "/Audio-Player/index.html",
-    "main.990116fd.css.map": "/Audio-Player/static/css/main.990116fd.css.map",
-    "main.66a63938.js.map": "/Audio-Player/static/js/main.66a63938.js.map"
+    "main.bdbc5038.css.map": "/Audio-Player/static/css/main.bdbc5038.css.map",
+    "main.100cc144.js.map": "/Audio-Player/static/js/main.100cc144.js.map"
   },
   "entrypoints": [
-    "static/css/main.990116fd.css",
-    "static/js/main.66a63938.js"
+    "static/css/main.bdbc5038.css",
+    "static/js/main.100cc144.js"
   ]
 }
