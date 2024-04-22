@@ -7,6 +7,22 @@ import PrevBtn from './Buttons/PrevBtn';
 import NextBtn from './Buttons/NextBtn';
 import './playlist.css';
 
+/*const calculateDurationInSeconds = (duration) => {
+    if (!duration) {
+      return 0;
+    }
+    const parts = duration.split(':').map(Number);
+    if (parts.length === 3) {
+      const [hours, minutes, seconds] = parts;
+      return hours * 3600 + minutes * 60 + seconds;
+    } else if (parts.length === 2) {
+      const [minutes, seconds] = parts;
+      return minutes * 60 + seconds;
+    } else {
+      return 0;
+    }
+  };*/
+
 const Playlist = () => {
   const [playlist, setPlaylist] = useState([]);
   const [status, setStatus] = useState('');
@@ -14,7 +30,12 @@ const Playlist = () => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [duration, setDuration] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const timerInterval = useRef(null);
+  const [progress, setProgress] = useState(0);
+  const [hoveredProgress, setHoveredProgress] = useState(null);
+
+  const audioRef = useRef(new Audio());
+  const progressBarRef = useRef(null);
+  const isDraggingRef = useRef(false);
 
   const renderTitle = useCallback((item) => {
     if (item && 'title' in item) {
@@ -25,75 +46,38 @@ const Playlist = () => {
     return "No Title";
   }, []);
 
-  const calculateDurationInSeconds = (duration) => {
-    if (!duration) {
-        return 0;
-    }
-    const parts = duration.split(':').map(Number);
-    if (parts.length === 3) {
-        const [hours, minutes, seconds] = parts;
-        return hours * 3600 + minutes * 60 + seconds;
-    } else if (parts.length === 2) {
-        const [minutes, seconds] = parts;
-        return minutes * 60 + seconds;
-    } else {
-        return 0;
-    }
-};
-
-  const progress = (elapsedTime / duration) * 100;
-
+  // Format the displayed time
   const formatTime = (timeInSeconds) => {
     const hours = Math.floor(timeInSeconds / 3600);
     const minutes = Math.floor((timeInSeconds % 3600) / 60);
     const seconds = Math.floor(timeInSeconds % 60);
 
     if (hours > 0) {
-        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     } else {
-        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
-};
-
-  const handleNext = () => {
-    setCurrentTrackIndex(currentTrackIndex === playlist.length - 1 ? 0 : currentTrackIndex + 1);
-    playTrack(playlist[currentTrackIndex === playlist.length - 1 ? 0 : currentTrackIndex + 1]);
   };
 
-  useEffect(() => {
-    if (isPlaying) {
-      timerInterval.current = setInterval(() => {
-        setElapsedTime(prevElapsedTime => {
-          if (prevElapsedTime >= duration) {
-            handleNext();
-            return 0;
-          }
-          return prevElapsedTime + 0.1;
-        });
-      }, 100);
-    } else {
-      clearInterval(timerInterval.current);
-    }
-    return () => clearInterval(timerInterval.current);
-  }, [isPlaying, duration, handleNext]);
-
-  const handleProgressClick = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const progressBarWidth = rect.width;
-    const clickedPercentage = (offsetX / progressBarWidth) * 100;
-    const clickedTime = (clickedPercentage / 100) * duration;
-    setElapsedTime(clickedTime);
-  };
-
+  // Use <audio> to play music and get the length of the src
   const playTrack = useCallback((track) => {
     setStatus(`${renderTitle(track)}`);
     setIsPlaying(true);
-    setDuration(calculateDurationInSeconds(track.duration));
-    setElapsedTime(0);
-    return () => clearInterval(timerInterval.current);
+    audioRef.current.pause();
+    audioRef.current.src = require(`../assets/musics/${track.src}`);
+    audioRef.current.volume = 1;
+    audioRef.current.load();
+    audioRef.current.addEventListener('loadedmetadata', () => {
+      setDuration(audioRef.current.duration);
+    });
+    audioRef.current.addEventListener('canplay', () => {
+      audioRef.current.play();
+    });
+    return () => audioRef.current.pause();
   }, [renderTitle]);
 
+
+  // Fetch json data
   useEffect(() => {
     fetch('/Audio-Player/audio_tracks.json')
       .then(response => {
@@ -111,10 +95,91 @@ const Playlist = () => {
       .catch(error => console.error('Error fetching playlist:', error));
   }, [playTrack]);
 
+  const handleNext = () => {
+    setCurrentTrackIndex(currentTrackIndex === playlist.length - 1 ? 0 : currentTrackIndex + 1);
+    playTrack(playlist[currentTrackIndex === playlist.length - 1 ? 0 : currentTrackIndex + 1]);
+  };
+
+  // When the audio is ended, goes to next audio
+  useEffect(() => {
+    audioRef.current.addEventListener('ended', handleAudioEnded);
+    return () => {
+      audioRef.current.removeEventListener('ended', handleAudioEnded);
+    };
+  }, [currentTrackIndex, playlist]);
+
+  const handleAudioEnded = () => {
+    handleNext();
+  };
+
+  // Handle audio time
+  const handleTimeUpdate = () => {
+    setElapsedTime(audioRef.current.currentTime);
+    if (!isDraggingRef.current) {
+      const newProgress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+      setProgress(newProgress);
+    }
+  };
+
+  useEffect(() => {
+    audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
+    return () => {
+      audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+    };
+  }, []);
+
+  // Handle audio progress bar movements
+  const handleProgressClick = (e) => {
+    const rect = progressBarRef.current.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const progressBarWidth = rect.width;
+    const clickedPercentage = offsetX / progressBarWidth;
+    const clickedTime = clickedPercentage * audioRef.current.duration;
+    
+    // Check if the audio is paused before setting new time and progress
+    if (!isPlaying) {
+      setElapsedTime(clickedTime);
+      setProgress(clickedPercentage * 100);
+    } else {
+      audioRef.current.currentTime = clickedTime;
+      setElapsedTime(clickedTime);
+      setProgress(clickedPercentage * 100);
+    }
+  };
+  
+
+  const handleProgressMouseDown = () => {
+    isDraggingRef.current = true;
+  };
+
+  const handleProgressMouseUp = () => {
+    isDraggingRef.current = false;
+  };
+
+  const handleMouseMove = (e) => {
+    if (isDraggingRef.current) {
+      handleProgressClick(e);
+    }
+  };
+
+  // Control audio's buttons
   const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
-    const currentTrack = playlist[currentTrackIndex];
-    setStatus(isPlaying ? 'Paused' : `${renderTitle(currentTrack)}`);
+    if (isPlaying) {
+      setIsPlaying(false);
+      audioRef.current.pause();
+      setStatus('Paused');
+    } else {
+      if (!isDraggingRef.current) { 
+        // Calculate the new time based on the progress
+        const newTime = (progress / 100) * audioRef.current.duration;
+        audioRef.current.currentTime = newTime;
+        setElapsedTime(newTime);
+      }
+      setIsPlaying(true);
+      audioRef.current.play();
+      const currentTrack = playlist[currentTrackIndex];
+      setStatus(`${renderTitle(currentTrack)}`);
+    }
   };
 
   const handlePrev = () => {
@@ -143,9 +208,9 @@ const Playlist = () => {
     const handleDoubleClick = () => {
       handleClick(item);
     };
-  
-    const isActive = index === currentTrackIndex; 
-  
+
+    const isActive = index === currentTrackIndex;
+
     return (
       <React.Fragment key={index}>
         {item.title ? (
@@ -166,12 +231,13 @@ const Playlist = () => {
 
   return (
     <div className="container">
+
       {/** Display audio infomation that is currently playing */}
       <div className="audio-info-container">
-          <div className="info-item">
-            {isPlaying ? <h5>Playing</h5> : <h5 style={{color: 'var(--color-black)'}}>.</h5>}
-            <h2>{status}</h2>
-          </div>
+        <div className="info-item">
+          {isPlaying ? <h5>Playing</h5> : <h5 style={{ color: 'var(--color-black)' }}>.</h5>}
+          <h2>{status}</h2>
+        </div>
         <div className="info-item-container">
           {playlist[currentTrackIndex]?.title ? (
             <>
@@ -223,8 +289,21 @@ const Playlist = () => {
       </div>
 
       {/** Display playing progress bar */}
-      <div className="progress-playbar" onClick={handleProgressClick}>
+      <div className="progress-playbar" 
+          ref={progressBarRef} 
+          onClick={handleProgressClick} 
+          onMouseDown={handleProgressMouseDown}
+          onMouseUp={handleProgressMouseUp}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setHoveredProgress(true)}
+          onMouseLeave={() => setHoveredProgress(false)}>
         <progress value={progress} max="100"></progress>
+        {hoveredProgress !== null && (
+          <div
+            className="progress-circle"
+            style={{ left: `${progress}%` }}
+          ></div>
+        )}
       </div>
 
       {/** Display control buttons for pause, prev audio, next audio */}
@@ -235,7 +314,8 @@ const Playlist = () => {
       </div>
 
       <div className="img-nextplay-container">
-         {/** Display the image of the current playing audio. If there is no img data in the audio tracks, then display the default song/podcast img */}
+
+        {/** Display the image of the current playing audio. If there is no img data in the audio tracks, then display the default song/podcast img */}
         <div className="audio-img">
           {playlist[currentTrackIndex]?.img ? (
             <img src={require(`../assets/images/${playlist[currentTrackIndex]?.img}`)} alt="Audio cover" />

@@ -6,13 +6,17 @@
     font-size: 1.5rem;
     cursor: pointer;
     margin-left: 50px;
-  }
+}
   
-  .btn:hover {
+.btn:hover {
     color: var(--color-white);
-  }
+}
 
-  .play-pause-btn {
+.shuffleBtn {
+  font-size: 1.2rem;
+}
+
+.play-pause-btn {
     color: var(--color-white);
     background-color: var(--color-primary);
     border: none;

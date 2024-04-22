@@ -4,7 +4,7 @@ import { FaShuffle } from "react-icons/fa6";
 
 const ShuffleBtn = ({ onClick }) => {
     return (
-        <button className="btn" onClick={onClick}>
+        <button className="btn shuffleBtn" onClick={onClick}>
             <FaShuffle />
         </button>
     );

@@ -56,15 +56,19 @@
 /*  Now Play img */
 
 .audio-img {
-    width: 400px;
-    height: 400px;
+    width: 35%;
+    height: 35%;
     overflow: hidden;
+    position: relative;
 }
   
 .audio-img img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+    object-position: center;
+    overflow: hidden;
 }
 
 /*  Now Play duration time display */
@@ -76,18 +80,42 @@
 }
 
 /*  Now Play progress bar */
+.progress-playbar {
+    position: relative;
+}
+
 .progress-playbar progress {
     appearance: none;
     width: 100%;
     height: 0.3rem;
 }
-
+  
 .progress-playbar progress::-webkit-progress-bar {
-    background-color: var(--color-light)
+    background-color: var(--color-light);
 }
   
 .progress-playbar progress::-webkit-progress-value {
     background-color: var(--color-primary);
+    position: relative;
+}
+
+.progress-circle {
+    position: absolute;
+    background-color: var(--color-primary);
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    margin-top: -11px;
+
+    transform: translateX(-50%);
+    pointer-events: none;
+    display: none;
+}
+
+.progress-playbar progress:hover + .progress-circle {
+    display: block;
 }
 
 /*  Play List   */
@@ -110,7 +138,7 @@
 }
   
 .playlist {
-    max-height: 22rem;
+    max-height: 21rem;
     max-width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
