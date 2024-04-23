@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Audio-Player/static/css/main.bdbc5038.css",
-    "main.js": "/Audio-Player/static/js/main.1089478c.js",
+    "main.js": "/Audio-Player/static/js/main.24a7317f.js",
     "static/media/calm-chill-beautiful.mp3": "/Audio-Player/static/media/calm-chill-beautiful.bbd7309eb4337059e3c0.mp3",
     "static/media/genres-hiphop.mp3": "/Audio-Player/static/media/genres-hiphop.4f7cf10bd5854eedfbf3.mp3",
     "static/media/motivate.mp3": "/Audio-Player/static/media/motivate.e85f5d302d36831f559a.mp3",
@@ -34,10 +34,10 @@
     "static/media/how_to_fail_malcolm_gladwell.jpg": "/Audio-Player/static/media/how_to_fail_malcolm_gladwell.062600c140654ddb4c34.jpg",
     "index.html": "/Audio-Player/index.html",
     "main.bdbc5038.css.map": "/Audio-Player/static/css/main.bdbc5038.css.map",
-    "main.1089478c.js.map": "/Audio-Player/static/js/main.1089478c.js.map"
+    "main.24a7317f.js.map": "/Audio-Player/static/js/main.24a7317f.js.map"
   },
   "entrypoints": [
     "static/css/main.bdbc5038.css",
-    "static/js/main.1089478c.js"
+    "static/js/main.24a7317f.js"
   ]
 }
