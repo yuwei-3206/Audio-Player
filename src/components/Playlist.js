@@ -52,6 +52,7 @@ const Playlist = () => {
     const minutes = Math.floor((timeInSeconds % 3600) / 60);
     const seconds = Math.floor(timeInSeconds % 60);
 
+    // Default format "00:00". If the time is over 1 hour, display format "00:00:00"
     if (hours > 0) {
       return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     } else {
@@ -60,7 +61,7 @@ const Playlist = () => {
   };
 
   // Use <audio> to play music and get the length of the src
-  const playTrack = useCallback((track) => {
+  const playTrack = useCallback((track, shouldPlay = true) => {
     setStatus(`${renderTitle(track)}`);
     setIsPlaying(true);
     audioRef.current.pause();
@@ -71,7 +72,13 @@ const Playlist = () => {
       setDuration(audioRef.current.duration);
     });
     audioRef.current.addEventListener('canplay', () => {
-      audioRef.current.play();
+      // Only play if shouldPlay is true
+      if (shouldPlay) { 
+        setIsPlaying(true);
+        audioRef.current.play();
+      } else { // Pause audio first entering the page
+        setIsPlaying(false);
+      }
     });
     return () => audioRef.current.pause();
   }, [renderTitle]);
@@ -90,7 +97,7 @@ const Playlist = () => {
         const shuffledPlaylist = [...data.tracks].sort(() => Math.random() - 0.5);
         setPlaylist(shuffledPlaylist);
         setCurrentTrackIndex(0);
-        playTrack(shuffledPlaylist[0]);
+        playTrack(shuffledPlaylist[0], false);
       })
       .catch(error => console.error('Error fetching playlist:', error));
   }, [playTrack]);
@@ -170,10 +177,12 @@ const Playlist = () => {
       setStatus('Paused');
     } else {
       if (!isDraggingRef.current) { 
-        // Calculate the new time based on the progress
-        const newTime = (progress / 100) * audioRef.current.duration;
-        audioRef.current.currentTime = newTime;
-        setElapsedTime(newTime);
+        const newTime = (progress / 100) * duration;
+        // Check if newTime is valid
+        if (!isNaN(newTime) && isFinite(newTime)) { 
+          audioRef.current.currentTime = newTime;
+          setElapsedTime(newTime);
+        }
       }
       setIsPlaying(true);
       audioRef.current.play();
