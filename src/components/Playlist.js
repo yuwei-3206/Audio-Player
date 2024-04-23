@@ -63,26 +63,28 @@ const Playlist = () => {
   // Use <audio> to play music and get the length of the src
   const playTrack = useCallback((track, shouldPlay = true) => {
     setStatus(`${renderTitle(track)}`);
-    setIsPlaying(true);
     audioRef.current.pause();
     audioRef.current.src = require(`../assets/musics/${track.src}`);
     audioRef.current.volume = 1;
     audioRef.current.load();
-    audioRef.current.addEventListener('loadedmetadata', () => {
-      setDuration(audioRef.current.duration);
-    });
-    audioRef.current.addEventListener('canplay', () => {
-      // Only play if shouldPlay is true
-      if (shouldPlay) { 
-        setIsPlaying(true);
-        audioRef.current.play();
-      } else { // Pause audio first entering the page
-        setIsPlaying(false);
-      }
-    });
+
+    if (shouldPlay) {
+      setIsPlaying(true);
+      audioRef.current.addEventListener('loadedmetadata', () => {
+        setDuration(audioRef.current.duration);
+        audioRef.current.play().catch(error => console.error('Error playing audio:', error)); // Play the audio once it's loaded
+      });
+    } else {
+      setIsPlaying(false); // Update isPlaying state if shouldPlay is false
+      audioRef.current.addEventListener('loadedmetadata', () => {
+        setDuration(audioRef.current.duration);
+        audioRef.current.pause();
+      });
+    }
+
+    // Clean up function to pause audio when unmounting or when shouldPlay changes
     return () => audioRef.current.pause();
   }, [renderTitle]);
-
 
   // Fetch json data
   useEffect(() => {
@@ -185,7 +187,7 @@ const Playlist = () => {
         }
       }
       setIsPlaying(true);
-      audioRef.current.play();
+      audioRef.current.play().catch(error => console.error('Error playing audio:', error));
       const currentTrack = playlist[currentTrackIndex];
       setStatus(`${renderTitle(currentTrack)}`);
     }
