@@ -1,7 +1,8 @@
 # Audio Player
-This project is an audio player application built with React.
-It allows users to play songs and podcasts from a playlist.
-The application includes features like play/pause, previous track, next track, and shuffle functionalities.
+This project is an audio player built with React. It allows users to play songs and podcasts from a playlist.
+The application includes features like play/pause, previous track, next track, shuffle, and track length functionalities.
+It's designed for larger screens and may not be optimized for mobile devices.
+Link: https://yuwei-3206.github.io/Audio-Player/
 
 Author: Yu-Wei Wu
 Date: March 2024
@@ -20,9 +21,10 @@ Date: March 2024
 - Allows users to double-click on a track to play it (handleDoubleClick()).
 - Provides a user-friendly interface with play/pause, previous, and next track buttons.
 - Displays the current status of the player.
+- Enables users to click on the progress bar to seek to a specific time in the track.
 
 # UI/UX
-- Features a clean and minimalist design.
+- A clean and minimalist design.
 - Provides feedback to users through status messages.
 - Offers a shuffle button for users to randomize the playlist order.
 
