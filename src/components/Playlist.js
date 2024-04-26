@@ -341,9 +341,10 @@ const Playlist = () => {
 
         {/** Display play list */}
         <div className="next-play">
-          <h2 className="playtitle">Play List
+          <div className='playtitle'>
+            <h2>Play List</h2>
             <ShuffleBtn onClick={handleShuffle} />
-          </h2>
+          </div>
           <div className='playlist'>
             <div className="songs-and-podcasts">
               {playlist.map((item, index) => (

@@ -5,7 +5,7 @@
 
     align-items: center;
     cursor: default;
-  }
+}
 
 .audio:hover {
     background-color: rgba(255, 255, 255, 0.25);
@@ -32,3 +32,26 @@
     width: 20%;
     text-align: left;
 }
+
+/* For Tablets - Medium Devices */
+@media screen and (max-width: 1024px) {
+  }
+  
+  /* For Mobile and small screens - Small Devices */
+  @media screen and (max-width: 600px) {
+    .audio  {
+        padding-left: 0;
+    }
+
+    .firstSpan {
+        width: 100%;
+    }
+
+    .secondSpan {
+        width: 35%;
+    }
+
+    .thirdSpan {
+        width: 35%;
+    }
+  }

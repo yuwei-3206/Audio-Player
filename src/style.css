@@ -39,6 +39,14 @@ body {
   .container {
     width: var(--container-width-ms);
   }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h5 {
+    font-size: 12px;
+  }
 }
 
 /* For Mobile and small screens - Small Devices */
@@ -49,5 +57,13 @@ body {
 
   section {
     margin-top: 5rem;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
   }
 }
